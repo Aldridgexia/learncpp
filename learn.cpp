@@ -9,6 +9,7 @@
 #include "learn.hpp"
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
 using namespace std;
 // enum gameResult{win,lose,tie,cancel};
 // struct myTimeStruct
@@ -55,21 +56,68 @@ using namespace std;
 // 	return (m == n);
 // }
 
-double tsin(double x){
-	double r = 0;
-	double t = x;
-	int n = 1;
-	do{
-		r += t;
-		n++;
-		t = -t*x*x/(2*n-1)/(2*n-2);
-	}
-	while(fabs(t)>1e-10);
-	return r;
+// double tsin(double x){
+// 	double r = 0;
+// 	double t = x;
+// 	int n = 1;
+// 	do{
+// 		r += t;
+// 		n++;
+// 		t = -t*x*x/(2*n-1)/(2*n-2);
+// 	}
+// 	while(fabs(t)>1e-10);
+// 	return r;
+// }
+
+// int rollDice(){
+// 	int die1 = 1 + rand()%6;
+// 	int die2 = 1 + rand()%6;
+// 	int sum = die1 + die2;
+// 	cout<<"player rolled "<<die1<<" + "<<die2<<" = "<<sum<<endl;
+// 	return sum;
+// }
+
+// enum GameStatus { WIN,LOSE,PLAYING };
+
+// int comm(int n, int k){
+// 	if(k>n){
+// 		return 0;
+// 	}
+// 	else if(n == k||k == 0){
+// 		return 1;
+// 	}
+// 	else
+// 		return comm(n-1,k) + comm(n-1,k-1);
+// }
+
+void move(char src,char dest){
+	cout<<src<<"==>"<<dest<<endl;
 }
 
+void hanoi(int n,char src,char medium,char dest){
+	if(n == 1){
+		move(src,dest);
+	}
+	else{
+		hanoi(n-1,src,dest,medium);
+		move(src,dest);
+		hanoi(n-1,medium,src,dest);
+	}
+}
 int main()
 {
+	int m;
+	cout<<"Enter the number of discs: ";
+	cin>>m;
+	cout<<"the step of moving "<<m<<"discs: "<<endl;
+	hanoi(m,'A','B','C');
+
+	// int n,k;
+	// cout<<"Enter n and k: ";
+	// cin>>n>>k;
+	// cout<<"C(n,k): "<<comm(n,k)<<endl;
+
+	//以下为正序排列，以上为倒序排列
     /*
     const double pi=3.14159;
     int radius=0;
@@ -237,22 +285,58 @@ int main()
 	// 	}
 	// }
 
-	double k,r,s;
-	cout<<"k = ";
-	cin>>k;
-	cout<<"r = ";
-	cin>>r;
-	cout<<"s = ";
-	cin>>s;
-	if(r*r <= s*s){
-		k = sqrt(tsin(r)*tsin(r)+tsin(s)*tsin(s));
-	}
-	else{
-		k = tsin(r*s)/2;
-	}
-	cout<<k<<endl;
+	// double k,r,s;
+	// cout<<"k = ";
+	// cin>>k;
+	// cout<<"r = ";
+	// cin>>r;
+	// cout<<"s = ";
+	// cin>>s;
+	// if(r*r <= s*s){
+	// 	k = sqrt(tsin(r)*tsin(r)+tsin(s)*tsin(s));
+	// }
+	// else{
+	// 	k = tsin(r*s)/2;
+	// }
+	// cout<<k<<endl;
 
-
+	// int sum,myPoint;
+	// GameStatus status;
+	// unsigned seed;
+	// cout<<"Enter a num: ";
+	// cin>>seed;
+	// srand(seed);
+	// sum = rollDice();
+	// switch(sum){
+	// 	case 7:
+	// 	case 11:
+	// 		status = WIN;
+	// 		break;
+	// 	case 2:
+	// 	case 3:
+	// 	case 12:
+	// 		status = LOSE;
+	// 		break;
+	// 	default:
+	// 		status = PLAYING;
+	// 		myPoint = sum;
+	// 		cout<<"point is "<<myPoint<<endl;
+	// 		break;
+	// }
+	// while(status == PLAYING){
+	// 	sum = rollDice();
+	// 	if(sum == myPoint){
+	// 		status = WIN;
+	// 	}
+	// 	else if(sum == 7){
+	// 		status = LOSE;
+	// 	}
+	// }
+	// if(status == WIN){
+	// 	cout<<"player wins!"<<endl;
+	// }
+	// else
+	// 	cout<<"player loses!"<<endl;
 
     return 0;
    
