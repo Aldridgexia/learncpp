@@ -10,6 +10,7 @@
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
+#include <iomanip>
 using namespace std;
 // enum gameResult{win,lose,tie,cancel};
 // struct myTimeStruct
@@ -90,27 +91,70 @@ using namespace std;
 // 		return comm(n-1,k) + comm(n-1,k-1);
 // }
 
-void move(char src,char dest){
-	cout<<src<<"==>"<<dest<<endl;
-}
+// void move(char src,char dest){
+// 	cout<<src<<"==>"<<dest<<endl;
+// }
 
-void hanoi(int n,char src,char medium,char dest){
-	if(n == 1){
-		move(src,dest);
-	}
-	else{
-		hanoi(n-1,src,dest,medium);
-		move(src,dest);
-		hanoi(n-1,medium,src,dest);
-	}
-}
+// void hanoi(int n,char src,char medium,char dest){
+// 	if(n == 1){
+// 		move(src,dest);
+// 	}
+// 	else{
+// 		hanoi(n-1,src,dest,medium);
+// 		move(src,dest);
+// 		hanoi(n-1,medium,src,dest);
+// 	}
+// }
+// void swap(int &a,int &b){
+// 	int t;
+// 	t = a;
+// 	a = b;
+// 	b = t;
+// }
+
+const double PI = 3.14159265358979;
+// inline double calArea(double radius){
+// 	return PI*radius*radius;
+// }
+
+// int getVolume(int length,int width=2, int height=3){
+// 	cout << setw(5) << length << setw(5) << width << setw(5)<< height << '\t';
+// return length * width * height;
+// }
+
 int main()
 {
-	int m;
-	cout<<"Enter the number of discs: ";
-	cin>>m;
-	cout<<"the step of moving "<<m<<"discs: "<<endl;
-	hanoi(m,'A','B','C');
+	int angle;
+	cout<<"Enter an angle: ";
+	cin>>angle;
+	double radian = angle*PI/180.0;
+	cout<<"sin("<<angle<<")= "<<sin(radian)<<endl;
+	cout<<"cos("<<angle<<")= "<<cos(radian)<<endl;
+	cout<<"tan("<<angle<<")= "<<tan(radian)<<endl;
+
+	// const int X = 10, Y = 12, Z = 15;
+	// cout << "Some box data is " ;
+	// cout << getVolume(X, Y, Z) << endl;
+	// cout << "Some box data is " ;
+	// cout << getVolume(X, Y) << endl;
+	// cout << "Some box data is " ;
+	// cout << getVolume(X) << endl;
+
+	// double r = 3.0;
+	// double area = calArea(r);
+	// cout<<area<<endl;
+
+	// int x = 5;
+	// int y = 10;
+	// cout<<"x and y before swap: x = "<<x<<" y = "<<y<<endl;
+	// swap(x,y);
+	// cout<<"x and y after swap: x = "<<x<<" y = "<<y<<endl;
+
+	// int m;
+	// cout<<"Enter the number of discs: ";
+	// cin>>m;
+	// cout<<"the step of moving "<<m<<"discs: "<<endl;
+	// hanoi(m,'A','B','C');
 
 	// int n,k;
 	// cout<<"Enter n and k: ";
