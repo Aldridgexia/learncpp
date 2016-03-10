@@ -112,7 +112,7 @@ using namespace std;
 // 	b = t;
 // }
 
-const double PI = 3.14159265358979;
+// const double PI = 3.14159265358979;
 // inline double calArea(double radius){
 // 	return PI*radius*radius;
 // }
@@ -122,15 +122,38 @@ const double PI = 3.14159265358979;
 // return length * width * height;
 // }
 
+class Clock{
+public:
+	Clock(int newH, int newM, int newS);
+	void setTime(int newH, int newM,int newS);
+	void showTime();
+private:
+	int hour, minute, second;
+};
+void Clock::setTime(int newH, int newM, int newS) {
+   hour = newH;
+   minute = newM;
+   second = newS;
+}
+void Clock::showTime() {
+   cout << hour << ":" << minute << ":" << second<<endl;
+}
+Clock::Clock(int newH, int newM, int newS):hour(newH), minute(newM), second(newS){
+
+}
+
 int main()
 {
-	int angle;
-	cout<<"Enter an angle: ";
-	cin>>angle;
-	double radian = angle*PI/180.0;
-	cout<<"sin("<<angle<<")= "<<sin(radian)<<endl;
-	cout<<"cos("<<angle<<")= "<<cos(radian)<<endl;
-	cout<<"tan("<<angle<<")= "<<tan(radian)<<endl;
+	Clock c(0,0,0);
+	c.showTime();
+
+	// int angle;
+	// cout<<"Enter an angle: ";
+	// cin>>angle;
+	// double radian = angle*PI/180.0;
+	// cout<<"sin("<<angle<<")= "<<sin(radian)<<endl;
+	// cout<<"cos("<<angle<<")= "<<cos(radian)<<endl;
+	// cout<<"tan("<<angle<<")= "<<tan(radian)<<endl;
 
 	// const int X = 10, Y = 12, Z = 15;
 	// cout << "Some box data is " ;
