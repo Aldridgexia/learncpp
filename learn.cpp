@@ -197,30 +197,40 @@ using namespace std;
 // enum class Side{Left,Right};
 // enum class Thing{Right,Wrong};
 
-class Point{
-public:
-	Point(int x=0,int y=0):x(x),y(y){count++;}
-	Point(Point &p){x = p.x; y = p.y; count++;}
-	~Point(){count--;}
-	int getX(){return x;}
-	int getY(){return y;}
-	void showCount(){cout<<"Object count = "<<count<<endl;}
-private:
-	int x,y;
-	static int count;
-};
-int Point::count = 0;
+// class Point{
+// public:
+// 	Point(int x=0,int y=0):x(x),y(y){count++;}
+// 	Point(Point &p){x = p.x; y = p.y; count++;}
+// 	~Point(){count--;}
+// 	int getX(){return x;}
+// 	int getY(){return y;}
+// 	void showCount(){cout<<"Object count = "<<count<<endl;}
+// private:
+// 	int x,y;
+// 	static int count;
+// };
+// int Point::count = 0;
 
 int main()
 {
-	Point a(4,5);
-	cout<<"Point A:"<<a.getX()<<","<<a.getY()<<endl;
-	a.showCount();
+	int a[10], b[10];
+  	for(int i = 0; i < 10; i++) {
+	    a[i] = i * 2 - 1;
+	    b[10 - i - 1] = a[i];
+  	}
+  	for(int i = 0; i < 10; i++) {
+	    cout << "a[" << i << "] = " << a[i] << "  ";
+	    cout << "b[" << i << "] = " << b[i] << endl;
+  	}
 
-	Point b(a);
-	cout<<"Point B:"<<b.getX()<<","<<b.getY()<<endl;
-	b.showCount();
-	
+	// Point a(4,5);
+	// cout<<"Point A:"<<a.getX()<<","<<a.getY()<<endl;
+	// a.showCount();
+
+	// Point b(a);
+	// cout<<"Point B:"<<b.getX()<<","<<b.getY()<<endl;
+	// b.showCount();
+
 
 	// Side s = Side::Right;
 	// Thing t = Thing::Wrong;
