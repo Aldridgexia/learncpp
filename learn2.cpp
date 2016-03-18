@@ -6,17 +6,59 @@
 
 using namespace std;
 
+void rowSum(int a[][4],int nRow){
+	for(int i=0;i<nRow;i++){
+		for(int j=0;j<4;j++){
+			a[i][0] = a[i][j];
+		}
+	}
+}
+
 int main(){
-	int f[20] = {1,1};
-	for (int i=2;i<20;i++){
-		f[i] = f[i-1] + f[i-2];
-	}
-	for (int i=0;i<20;i++){
-		if(i%4 == 0)cout<<endl;
-		cout.width(5);
-		cout<<f[i];
-	}
-	cout<<endl;
+	int table[3][4] = {{1, 2, 3, 4}, {2, 3, 4, 5}, {3, 4, 5, 6}};
+	for (int i = 0; i < 3; i++)  {
+         for (int j = 0; j < 4; j++)
+              cout << table[i][j] << "   ";
+         cout << endl;
+     }
+     rowSum(table, 3);  
+     for(int i=0;i<3;i++){
+     	cout << "Sum of row " << i << " is " << table[i][0] << endl;
+     }
+     
+	// const char key[] = {'a','c','b','a','d'};
+	// const int ques_num = 5;
+	// char usr_input;
+	// int ques = 0, correct_num = 0;
+
+	// cout<<"Enter the "<<ques_num<<" question tests:"<<endl;
+	// while(cin.get(usr_input)){
+	// 	if(usr_input != '\n'){
+	// 		if(usr_input == key[ques]){
+	// 			correct_num++;
+	// 			cout<<" ";
+	// 		}
+	// 		else{
+	// 			cout<<"*";
+	// 		}
+	// 		ques++;
+	// 	}
+	// 	else{
+	// 		cout<<"Score: "<<static_cast<float>(correct_num)/ques_num*100<<"%";
+	// 		ques = 0; correct_num = 0;cout<<endl;
+	// 	}
+	// }
+
+	// int f[20] = {1,1};
+	// for (int i=2;i<20;i++){
+	// 	f[i] = f[i-1] + f[i-2];
+	// }
+	// for (int i=0;i<20;i++){
+	// 	if(i%4 == 0)cout<<endl;
+	// 	cout.width(5);
+	// 	cout<<f[i];
+	// }
+	// cout<<endl;
 
 
 	// int a[10], b[10];
