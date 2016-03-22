@@ -14,12 +14,25 @@ using namespace std;
 // 	}
 // }
 
+
 int main(){
-	int array[3] = {1,2,3};
-	for(int &e:array){
-		e += 2;
-		cout<<e<<endl;
+	int line1[] = {1,2,3};
+	int line2[] = {4,5,6};
+	int line3[] = {7,8,9};
+	int *pline[] = {line1,line2,line3};
+	cout<<"Matrix test: "<<endl;
+	for(int i=0;i<3;i++){
+		for(int j=0;j<3;j++){
+			cout<<pline[i][j]<<",";
+		}
+		cout<<endl;
 	}
+
+	// int array[3] = {1,2,3};
+	// for(int &e:array){
+	// 	e += 2;
+	// 	cout<<e<<endl;
+	// }
 
 	// int table[3][4] = {{1, 2, 3, 4}, {2, 3, 4, 5}, {3, 4, 5, 6}};
 	// for (int i = 0; i < 3; i++)  {
