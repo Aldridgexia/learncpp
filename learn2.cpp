@@ -13,20 +13,32 @@ using namespace std;
 // 		}
 // 	}
 // }
-
+void splitFloat(float x,int *intPart, float *fracPart){
+	*intPart = static_cast<int>(x);
+	*fracPart = x - *intPart;
+}
 
 int main(){
-	int line1[] = {1,2,3};
-	int line2[] = {4,5,6};
-	int line3[] = {7,8,9};
-	int *pline[] = {line1,line2,line3};
-	cout<<"Matrix test: "<<endl;
+	cout<<"Enter 3 float point numbers: "<<endl;
 	for(int i=0;i<3;i++){
-		for(int j=0;j<3;j++){
-			cout<<pline[i][j]<<",";
-		}
-		cout<<endl;
+		float x, f;
+		int n;
+		cin>>x;
+		splitFloat(x, &n, &f);
+		cout<<"Integer part: "<<n<<" Fraction part: "<<f<<endl;
 	}
+
+	// int line1[] = {1,2,3};
+	// int line2[] = {4,5,6};
+	// int line3[] = {7,8,9};
+	// int *pline[] = {line1,line2,line3};
+	// cout<<"Matrix test: "<<endl;
+	// for(int i=0;i<3;i++){
+	// 	for(int j=0;j<3;j++){
+	// 		cout<<pline[i][j]<<",";
+	// 	}
+	// 	cout<<endl;
+	// }
 
 	// int array[3] = {1,2,3};
 	// for(int &e:array){
