@@ -16,10 +16,78 @@ using namespace std;
 // void splitFloat(float x,int *intPart, float *fracPart){
 // 	*intPart = static_cast<int>(x);
 // 	*fracPart = x - *intPart;
-}
+// }
+
+// int* search(int* a, int num){
+// 	for(int i=0;i<num;i++){
+// 		if(a[i] == 0){
+// 			return &a[i];
+// 		}
+// 	}
+// }
+
+// int compute(int a, int b,int(*func)(int,int)){
+// 	return func(a,b);
+// }
+// int max(int a, int b){
+// 	return((a>b)?a:b);
+// }
+// int min(int a, int b){
+// 	return((a<b)?a:b);
+// }
+// int sum(int a, int b){
+// 	return a+b;
+// }
+// class Point {
+// public:
+//   Point(int x = 0, int y = 0) : x(x), y(y) { }
+//      int getX() const { return x; }        
+//      int getY() const { return y; }        
+// private:
+//      int x, y;
+// };
 
 int main(){
-	
+	int (*fp)[9][8] = new int[7][9][8];
+	for (int i = 0; i < 7; i++)
+    	for (int j = 0; j < 9; j++)
+    		for (int k = 0; k < 8; k++)
+    			*(*(*(fp + i) + j) + k) = (i*100+j*10+k);
+    for (int i = 0; i < 7; i++) {
+    	for (int j = 0; j < 9; j++) {
+    		for (int k = 0; k < 8; k++)
+    			cout<<fp[i][j][k]<<' ';
+    			cout<<endl;
+    		}
+    		cout<<endl;
+    	}
+    	delete[] fp;
+
+
+	// Point a(4,5);
+	// Point *ptr = &a;
+	// cout<<ptr->getX()<<endl;
+	// cout<<a.getX()<<endl;
+
+	// int a,b,res;
+	// cout<<"Please enter a: "; cin>>a;
+	// cout<<"Please enter b: "; cin>>b;
+
+	// res = compute(a,b,&max);
+	// cout<<"max of a and b is "<<res<<endl;
+	// res = compute(a,b,&min);
+	// cout<<"min of a and b is "<<res<<endl;
+	// res = compute(a,b,&sum);
+	// cout<<"sum of a and b is "<<res<<endl;
+
+
+	// int array[10];
+	// int* search(int* a, int num);
+	// for(int i=0;i<10;i++){
+	// 	cin>>array[i];
+	// }
+	// int* zeroptr = search(array, 10);
+
 	// cout<<"Enter 3 float point numbers: "<<endl;
 	// for(int i=0;i<3;i++){
 	// 	float x, f;
@@ -105,3 +173,4 @@ int main(){
 
   	return 0;
 }
+
