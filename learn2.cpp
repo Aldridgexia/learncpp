@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -47,21 +48,40 @@ using namespace std;
 //      int x, y;
 // };
 
+double average(const vector<double> &arr){
+	double sum = 0;
+	for(unsigned i=0;i<arr.size();i++){
+		sum += arr[i];
+	}
+	return sum/arr.size();
+}
+
 int main(){
-	int (*fp)[9][8] = new int[7][9][8];
-	for (int i = 0; i < 7; i++)
-    	for (int j = 0; j < 9; j++)
-    		for (int k = 0; k < 8; k++)
-    			*(*(*(fp + i) + j) + k) = (i*100+j*10+k);
-    for (int i = 0; i < 7; i++) {
-    	for (int j = 0; j < 9; j++) {
-    		for (int k = 0; k < 8; k++)
-    			cout<<fp[i][j][k]<<' ';
-    			cout<<endl;
-    		}
-    		cout<<endl;
-    	}
-    	delete[] fp;
+	unsigned n;
+	cout<<"n = ";
+	cin>>n;
+
+	vector<double> arr(n);
+	cout<<"Please input "<<n<<" real numbers: "<<endl;
+	for(int i=0;i<n;i++)
+		cin>>arr[i];
+	cout<<"Average = "<<average(arr)<<endl;
+
+
+	// int (*fp)[9][8] = new int[7][9][8];
+	// for (int i = 0; i < 7; i++)
+ //    	for (int j = 0; j < 9; j++)
+ //    		for (int k = 0; k < 8; k++)
+ //    			*(*(*(fp + i) + j) + k) = (i*100+j*10+k);
+ //    for (int i = 0; i < 7; i++) {
+ //    	for (int j = 0; j < 9; j++) {
+ //    		for (int k = 0; k < 8; k++)
+ //    			cout<<fp[i][j][k]<<' ';
+ //    			cout<<endl;
+ //    		}
+ //    		cout<<endl;
+ //    	}
+ //    	delete[] fp;
 
 
 	// Point a(4,5);
