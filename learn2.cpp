@@ -57,15 +57,15 @@ double average(const vector<double> &arr){
 }
 
 int main(){
-	unsigned n;
-	cout<<"n = ";
-	cin>>n;
+	// unsigned n;
+	// cout<<"n = ";
+	// cin>>n;
 
-	vector<double> arr(n);
-	cout<<"Please input "<<n<<" real numbers: "<<endl;
-	for(int i=0;i<n;i++)
-		cin>>arr[i];
-	cout<<"Average = "<<average(arr)<<endl;
+	// vector<double> arr(n);
+	// cout<<"Please input "<<n<<" real numbers: "<<endl;
+	// for(int i=0;i<n;i++)
+	// 	cin>>arr[i];
+	// cout<<"Average = "<<average(arr)<<endl;
 
 
 	// int (*fp)[9][8] = new int[7][9][8];
