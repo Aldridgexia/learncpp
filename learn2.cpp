@@ -48,15 +48,46 @@ using namespace std;
 //      int x, y;
 // };
 
-double average(const vector<double> &arr){
-	double sum = 0;
-	for(unsigned i=0;i<arr.size();i++){
-		sum += arr[i];
+// double average(const vector<double> &arr){
+// 	double sum = 0;
+// 	for(unsigned i=0;i<arr.size();i++){
+// 		sum += arr[i];
+// 	}
+// 	return sum/arr.size();
+// }
+
+class Base1{
+public:
+	void display() const{
+		cout<<"Base1::display()"<<endl;
 	}
-	return sum/arr.size();
+};
+class Base2: public Base1{
+public:
+	void display() const{
+		cout<<"Base2::display()"<<endl;
+	}
+};
+class Derived: public Base2{
+public:
+	void display() const{
+		cout<<"Derived::display()"<<endl;
+	}
+};
+
+void func(Base1 *ptr){
+	ptr->display();
 }
 
 int main(){
+	Base1 base1;
+	Base2 base2;
+	Derived derived;
+
+	func(&base1);
+	func(&base2);
+	func(&derived);
+
 	// unsigned n;
 	// cout<<"n = ";
 	// cin>>n;
