@@ -80,18 +80,18 @@ void func(Base1 *ptr){
 }
 
 int main(){
-	Base1 base1;
-	Base2 base2;
-	Derived derived;
+	// Base1 base1;
+	// Base2 base2;
+	// Derived derived;
 
-	func(&base1);
-	func(&base2);
-	func(&derived);
+	// func(&base1);
+	// func(&base2);
+	// func(&derived);
 
-	unsigned n;
-	cout<<"n = ";
-	cin>>n;
-
+	// unsigned n;
+	// cout<<"n = ";
+	// cin>>n;
+	
 	// vector<double> arr(n);
 	// cout<<"Please input "<<n<<" real numbers: "<<endl;
 	// for(int i=0;i<n;i++)
