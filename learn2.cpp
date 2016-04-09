@@ -79,33 +79,62 @@ using namespace std;
 // 	ptr->display();
 // }
 
-class Complex{
+// class Complex{
+// public:
+// 	Complex(double r=0.0, double i=0.0): real(r), imag(i){}
+// 	Complex operator + (const Complex &c2) const;
+// 	Complex operator - (const Complex &c2) const;
+// 	void display() const;
+// private:
+// 	double real;
+// 	double imag;
+// };
+// Complex Complex::operator+(const Complex &c2) const{
+// 	return Complex(real + c2.real,imag + c2.imag);
+// }
+// Complex Complex::operator-(const Complex &c2) const{
+// 	return Complex(real - c2.real,imag - c2.imag);
+// }
+// void Complex::display() const{
+// 	cout<<"("<<real<<","<<imag<<")"<<endl;
+// }
+
+class Base1 {
 public:
-	Complex(double r=0.0, double i=0.0): real(r), imag(i){}
-	Complex operator + (const Complex &c2) const;
-	Complex operator - (const Complex &c2) const;
-	void display() const;
-private:
-	double real;
-	double imag;
+	virtual void display() const = 0;
 };
-Complex Complex::operator+(const Complex &c2) const{
-	return Complex(real + c2.real,imag + c2.imag);
+class Base2: public Base1 {
+public:
+	virtual void display() const;
+};
+void Base2::display() const {
+	cout<<"Base2::display()"<<endl;
+};
+
+class Derived: public Base2 {
+public:
+	virtual void display() const;
+};
+void Derived::display() const {
+	cout<<"Derived::display()"<<endl;
+};
+void func(Base1 *ptr) {
+	ptr -> display();
 }
-Complex Complex::operator-(const Complex &c2) const{
-	return Complex(real - c2.real,imag - c2.imag);
-}
-void Complex::display() const{
-	cout<<"("<<real<<","<<imag<<")"<<endl;
-}
+
 int main(){
-	Complex c1(5,4), c2(2,10), c3;
-	cout<<"c1 = ";c1.display();
-	cout<<"c2 = ";c2.display();
-	c3 = c1 - c2;
-	cout<<"c3 = c1 - c2 = ";c3.display();
-	c3 = c1 + c2;
-	cout<<"c3 = c1 + c2 = ";c3.display();
+	Base2 base2;
+	Derived derived;
+	func(&base2);
+	func(&derived);
+
+	// Complex c1(5,4), c2(2,10), c3;
+	// cout<<"c1 = ";c1.display();
+	// cout<<"c2 = ";c2.display();
+	// c3 = c1 - c2;
+	// cout<<"c3 = c1 - c2 = ";c3.display();
+	// c3 = c1 + c2;
+	// cout<<"c3 = c1 + c2 = ";c3.display();
 
 	// Base1 base1;
 	// Base2 base2;
