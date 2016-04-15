@@ -99,34 +99,34 @@ using namespace std;
 // 	cout<<"("<<real<<","<<imag<<")"<<endl;
 // }
 
-class Base1 {
-public:
-	virtual void display() const = 0;
-};
-class Base2: public Base1 {
-public:
-	virtual void display() const;
-};
-void Base2::display() const {
-	cout<<"Base2::display()"<<endl;
-};
+// class Base1 {
+// public:
+// 	virtual void display() const = 0;
+// };
+// class Base2: public Base1 {
+// public:
+// 	virtual void display() const;
+// };
+// void Base2::display() const {
+// 	cout<<"Base2::display()"<<endl;
+// };
 
-class Derived: public Base2 {
-public:
-	virtual void display() const;
-};
-void Derived::display() const {
-	cout<<"Derived::display()"<<endl;
-};
-void func(Base1 *ptr) {
-	ptr -> display();
-}
+// class Derived: public Base2 {
+// public:
+// 	virtual void display() const;
+// };
+// void Derived::display() const {
+// 	cout<<"Derived::display()"<<endl;
+// };
+// void func(Base1 *ptr) {
+// 	ptr -> display();
+// }
 
 int main(){
-	Base2 base2;
-	Derived derived;
-	func(&base2);
-	func(&derived);
+	// Base2 base2;
+	// Derived derived;
+	// func(&base2);
+	// func(&derived);
 
 	// Complex c1(5,4), c2(2,10), c3;
 	// cout<<"c1 = ";c1.display();
