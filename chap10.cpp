@@ -37,20 +37,46 @@ using namespace std;
 // template <class T, class Sequence = deque<T>> class stack;
 
 int main(){
-	map<char, int> s;
-	char c;
-	do{
-		cin>>c;
-		if(isalpha(c)){
-			c = tolower(c);
-			s[c]++;
-		}
-	}
-	while(c!='.');
-	for(map<char, int>::iterator iter = s.begin(); iter!=s.end(); ++iter){
-		cout<<iter->first<<" "<<iter->second<<" ";
+	int a[8] = {3,2,5,6,4,1,9,8};
+	cout<<"number 9's index: "<<find(a,a+8,9)-a<<endl;
+	cout<<"ascending sort: "<<endl;
+	sort(a,a+8);
+	for(int i=0;i<8;i++){
+		cout<<a[i]<<" ";
 	}
 	cout<<endl;
+	cout<<"descending sort: "<<endl;
+	sort(a,a+8,greater<int>());
+	for(int i=0;i<8;i++){
+		cout<<a[i]<<" ";
+	}
+	cout<<endl;
+
+	// deque<int> iDeque;
+	// iDeque.push_back(3);
+	// iDeque.push_back(1);
+	// iDeque.push_back(4);
+	// iDeque.push_back(8);
+	// iDeque.push_back(6);
+	// while(!iDeque.empty()){
+	// 	cout<<"get item "<<iDeque.front()<<endl;
+	// 	iDeque.pop_front();
+	// }
+
+	// map<char, int> s;
+	// char c;
+	// do{
+	// 	cin>>c;
+	// 	if(isalpha(c)){
+	// 		c = tolower(c);
+	// 		s[c]++;
+	// 	}
+	// }
+	// while(c!='.');
+	// for(map<char, int>::iterator iter = s.begin(); iter!=s.end(); ++iter){
+	// 	cout<<iter->first<<" "<<iter->second<<" ";
+	// }
+	// cout<<endl;
 
 	// map<string, int> courses;
 	// courses.insert(make_pair("CSAPP", 3));
