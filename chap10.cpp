@@ -7,6 +7,11 @@
 #include <deque>
 #include <string>
 #include <stack>
+#include <set>
+#include <utility>
+#include <map>
+#include <cctype>
+
 using namespace std;
 
 // double square(double x){
@@ -32,16 +37,74 @@ using namespace std;
 // template <class T, class Sequence = deque<T>> class stack;
 
 int main(){
-	stack<char> s;
-	string str;
-	cin>>str;
-	for(string::iterator iter=str.begin(); iter!=str.end(); ++iter)
-		s.push(*iter);
-	while(!s.empty()){
-		cout<<s.top();
-		s.pop();
+	map<char, int> s;
+	char c;
+	do{
+		cin>>c;
+		if(isalpha(c)){
+			c = tolower(c);
+			s[c]++;
+		}
+	}
+	while(c!='.');
+	for(map<char, int>::iterator iter = s.begin(); iter!=s.end(); ++iter){
+		cout<<iter->first<<" "<<iter->second<<" ";
 	}
 	cout<<endl;
+
+	// map<string, int> courses;
+	// courses.insert(make_pair("CSAPP", 3));
+ //    courses.insert(make_pair("C++", 2));
+ //    courses.insert(make_pair("CSARCH", 4));
+ //    courses.insert(make_pair("COMPILER", 4));
+ //    courses.insert(make_pair("OS", 5));
+ //    int n = 3;
+ //    int sum = 0;
+ //    while(n>0){
+ //    	string name;
+ //    	cin>>name;
+ //    	map<string, int>::iterator iter = courses.find(name);
+ //    	if(iter == courses.end()){
+ //    		cout<<name<<" is not available!"<<endl;
+ //    	}
+ //    	else{
+ //    		sum += iter->second;
+ //    		courses.erase(iter);
+ //    		n--;
+ //    	}
+ //    }
+ //    cout<<"total credit: "<<sum<<endl;
+
+	// set<double> s;
+	// while(true){
+	// 	double v;
+	// 	cin>>v;
+	// 	if(v==0) break;
+	// 	pair<set<double>::iterator,bool> r=s.insert(v);
+	// 	if(!r.second)
+	// 		cout<<v<<" is duplicated!"<<endl;
+	// }
+	// set<double>::iterator iter1=s.begin();
+	// set<double>::iterator iter2=s.end();
+	// double medium = (*iter1 + *(--iter2))/2;
+	// cout<<" <= medium: ";
+	// copy(s.begin(), s.upper_bound(medium), ostream_iterator<double>(cout, " "));
+	// cout<<endl;
+	// cout<<" >= medium: ";
+	// copy(s.lower_bound(medium), s.end(), ostream_iterator<double>(cout, " "));
+	// cout<<endl;
+
+
+	// stack<char> s;
+	// string str;
+	// cin>>str;
+	// for(string::iterator iter=str.begin(); iter!=str.end(); ++iter)
+	// 	s.push(*iter);
+	// while(!s.empty()){
+	// 	cout<<s.top();
+	// 	s.pop();
+	// }
+	// cout<<endl;
 
 	// istream_iterator<int> i1(cin), i2;
 	// vector<int> s1(i1, i2);
