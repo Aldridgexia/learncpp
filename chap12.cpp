@@ -32,26 +32,26 @@ using namespace std;
 //     throw myException("exception thrown by func()");
 // };
 
-double area(double a, double b, double c) throw(invalid_argument){
-	if(a<=0||b<=0||c<=0)
-		throw invalid_argument("the side length should be positive.");
-	if(a+b<=c||a+c<=b||b+c<=a)
-		throw invalid_argument("the side length should fit the triangle inequation.");
-	double s = (a+b+c)/2;
-	return sqrt(s*(s-a)*(s-b)*(s-c));
-}
+// double area(double a, double b, double c) throw(invalid_argument){
+// 	if(a<=0||b<=0||c<=0)
+// 		throw invalid_argument("the side length should be positive.");
+// 	if(a+b<=c||a+c<=b||b+c<=a)
+// 		throw invalid_argument("the side length should fit the triangle inequation.");
+// 	double s = (a+b+c)/2;
+// 	return sqrt(s*(s-a)*(s-b)*(s-c));
+// }
 
 
 int main(){
-	double a,b,c;
-	cout<<"input three sides: ";
-	cin>>a>>b>>c;
-	try{
-		double s = area(a,b,c);
-		cout<<"Area: "<<s<<endl;
-	} catch(exception &e){
-		cout<<"Error: "<<e.what()<<endl;
-	}
+	// double a,b,c;
+	// cout<<"input three sides: ";
+	// cin>>a>>b>>c;
+	// try{
+	// 	double s = area(a,b,c);
+	// 	cout<<"Area: "<<s<<endl;
+	// } catch(exception &e){
+	// 	cout<<"Error: "<<e.what()<<endl;
+	// }
 
 	// cout<<"In main function."<<endl;
 	// try{
