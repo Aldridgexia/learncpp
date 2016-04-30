@@ -26,11 +26,11 @@ public:
 	void Stop() {cout<<"Motorcar stops."<<endl;}
 };
 
-class Motorcycle : public Bicycle, public Motorcar {
-public:
-	void Run() {cout<<"Motorcycle runs."<<endl;}
-	void Stop() {cout<<"Motorcycle stops."<<endl;}
-};
+// class Motorcycle : public Bicycle, public Motorcar {
+// public:
+// 	void Run() {cout<<"Motorcycle runs."<<endl;}
+// 	void Stop() {cout<<"Motorcycle stops."<<endl;}
+// };
 
 int main() {
 	Vehicle v;
@@ -42,9 +42,9 @@ int main() {
 	Motorcar m;
 	m.Run();
 	m.Stop();
-	Motorcycle mc;
-	mc.Run();
-	mc.Stop();
+	// Motorcycle mc;
+	// mc.Run();
+	// mc.Stop();
 	Vehicle *vp = &v;
 	vp->Run();
 	vp->Stop();
@@ -54,9 +54,9 @@ int main() {
 	vp = &m;
 	vp->Run();
 	vp->Stop();
-	vp = &mc;
-	vp->Run();
-	vp->Stop();
+	// vp = &mc;
+	// vp->Run();
+	// vp->Stop();
 
 	return 0;
 }
