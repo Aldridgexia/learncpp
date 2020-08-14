@@ -29,5 +29,29 @@
 
 ## 1.3 a word about comments
 
+- `//`single line comment
+- `/* */`multi line comment
+- comment paris do not nest
+
+## 1.4 flow of control
+
+- `+=` compound assignment operator
+- `++x` prefix increment operator
+- each for statement has a header and a body
+- the header consists of 3 parts: an init-statement, a condition and an expression
+- common error:
+  - syntax errors
+  - type errors
+  - declaration errors
+- `=` for assignment and `==` for equality
+
+## 1.5 introducing classes
+
+- headers from standard library are enclosed with `<>` while those are not in `""`
+- member functions are also referred to as methods.
+- `.` dot operator and `()` call operator
+
+## 1.6 the bookstore program
+
 
 
