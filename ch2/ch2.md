@@ -303,4 +303,174 @@
 
 - low-level `const`: a pointer can point to a `const` object
 
-- 
+- ```c++
+  int i = 0;
+  int *const p1 = &i;  // we can't change the value of p1; const is top-level
+  const int ci = 42;   // we cannot change ci; const is top-level
+  const int *p2 = &ci; // we can change p2; const is low-level
+  const int *const p3 = p2; // right-most const is top-level, left-most is not
+  const int &r = ci;  // const in reference types is always low-level
+  
+  i = ci;  // ok: copying the value of ci; top-level const in ci is ignored
+  p2 = p3; // ok: pointed-to type matches; top-level const in p3 is ignored
+  
+  int *p = p3; // error: p3 has a low-level const but p doesn't
+  p2 = p3;     // ok: p2 has the same low-level const qualification as p3
+  p2 = &i;     // ok: we can convert int* to const int*
+  int &r = ci; // error: can't bind an ordinary int& to a const int object
+  const int &r2 = i; // ok: can bind const int& to plain int
+  ```
+
+- we can convert a non`const` to `const` but not the other way round
+
+- a constant expression cannot change its value and can be evaluated at compile time
+
+- a literal is a constant expression
+
+- a `const` object that is initialized from a constant expression is also a constant expression
+
+- ```c++
+  const int max_files = 20;    // max_files is a constant expression
+  const int limit = max_files + 1; // limit is a constant expression
+  int staff_size = 27;       // staff_size is not a constant expression
+  const int sz = get_size(); // sz is not a constant expression
+  ```
+
+- ```c++
+  // c++ 11
+  constexpr int mf = 20;        // 20 is a constant expression
+  constexpr int limit = mf + 1; // mf + 1 is a constant expression
+  constexpr int sz = size();    // ok only if size is a constexpr function
+  ```
+
+- types we can use in a `constexpr` are literal types
+
+- arithmetic, reference and pointer types are literal types
+
+- ```c++
+  const int *p = nullptr;     // p is a pointer to a const int
+  constexpr int *q = nullptr; // q is a const pointer to int
+  
+  constexpr int *np = nullptr; // np is a constant pointer to int that is null
+  int j = 0;
+  constexpr int i = 42;  // type of i is const int
+  // i and j must be defined outside any function
+  constexpr const int *p = &i; // p is a constant pointer to the const int i
+  constexpr int *p1 = &j;      // p1 is a constant pointer to the int j
+  ```
+
+### 2.5 dealing with types
+
+- type alias is a name that is a synonym for another type
+
+- ```c++
+  typedef double wages;   // wages is a synonym for double
+  typedef wages base, *p; // base is a synonym for double, p for double*
+  
+  // c++ 11
+  using SI = Sales_item; // SI is a synonym for Sales_item
+  
+  wages hourly, weekly;    // same as double hourly, weekly;
+  SI item;                 // same as Sales_item item
+  ```
+
+- ```c++
+  typedef char *pstring;
+  const pstring cstr = 0; // cstr is a constant pointer to char
+  const pstring *ps;      // ps is a pointer to a constant pointer to char
+  
+  const char *cstr = 0; // wrong interpretation of const pstring cstr
+  char *const cstr = 0; // correct interpretation
+  ```
+
+- a variable that uses `auto` must have an initializer
+
+- ```c++
+  // c++ 11
+  // the type of item is deduced from the type of the result of adding val1 and val2
+  auto item = val1 + val2; // item initialized to the result of val1 + val2
+  
+  auto i = 0, *p = &i;      // ok: i is int and p is a pointer to int
+  auto sz = 0, pi = 3.14;   // error: inconsistent types for sz and pi
+  
+  int i = 0, &r = i;
+  auto a = r;  // a is an int (r is an alias for i, which has type int)
+  
+  const int ci = i, &cr = ci;
+  auto b = ci;  // b is an int (top-level const in ci is dropped)
+  auto c = cr;  // c is an int (cr is an alias for ci whose const is top-level)
+  auto d = &i;  // d is an int*(& of an int object is int*)
+  auto e = &ci; // e is const int*(& of a const object is low-level const)
+  
+  const auto f = ci; // deduced type of ci is int; f has type const int
+  
+  auto &g = ci;       // g is a const int& that is bound to ci
+  auto &h = 42;       // error: we can't bind a plain reference to a literal
+  const auto &j = 42; // ok: we can bind a const reference to a literal
+  
+  auto k = ci, &l = i;    // k is int; l is int&
+  auto &m = ci, *p = &ci; // m is a const int&;p is a pointer to const int
+  // error: type deduced from i is int; type deduced from &ci is const int
+  auto &n = i, *p2 = &ci;
+  ```
+
+- `decltype` returns the type of expression's operand but does not evaluate the expression
+
+- `decltype` returns the type of the variable, including top-level `const` references
+
+- ```c++
+  const int ci = 0, &cj = ci;
+  decltype(ci) x = 0; // x has type const int
+  decltype(cj) y = x; // y has type const int& and is bound to x
+  decltype(cj) z;     // error: z is a reference and must be initialized
+  ```
+
+- `decltype` returns a reference type for expressions that yield objects taht can stand on the left-hand side of assignment
+
+- ```c++
+  // decltype of an expression can be a reference type
+  int i = 42, *p = &i, &r = i;
+  decltype(r + 0) b;  // ok: addition yields an int; b is an (uninitialized) int
+  decltype(*p) c;     // error: c is int& and must be initialized
+  
+  // decltype of a parenthesized variable is always a reference
+  decltype((i)) d;    // error: d is int& and must be initialized
+  decltype(i) e;      // ok: e is an (uninitialized) int
+  ```
+
+### 2.6 defining our own data structures
+
+- ```c++
+  struct Sales_data {
+      std::string bookNo;
+      unsigned units_sold = 0;
+      double revenue = 0.0;
+  };
+  
+  struct Sales_data { /* ... */ } accum, trans, *salesptr;
+  // equivalent, but better way to define these objects
+  struct Sales_data { /* ... */ };
+  Sales_data accum, trans, *salesptr;
+  ```
+
+- close curly must be followed by a semicolon
+
+- this class only has data members
+
+- in-class initializers are restricted
+
+- typically, classes are stored in headers whose name derives from the name of the class
+
+- preprocessor makes including a header multiple times safe
+
+- preprocessor is originally from C
+
+- preprocessor runs before the compiler
+
+- preprocessor variables have two states, defined or undefined
+
+  - `#define`
+  - `#ifdef`
+  - `ifndef`
+
+- preprocessor variables and names of header guards must be unique throughout the program
